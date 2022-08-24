@@ -15,8 +15,8 @@
 1. fvmを使用しFlutterSDKをインストール
 
 ```
-$ fvm install 2.8.1
-$ fvm use 2.8.1
+$ fvm install 3.0.5
+$ fvm use 3.0.5
 ```
 
 2. Android Studio/Preference/Language & Frameworks/DartとFlutterのSDK Pathを設定する
