@@ -1,16 +1,22 @@
-# sample
+# 環境構築
 
-A new Flutter project.
+## 前提条件
 
-## Getting Started
+- Dartがインストールされていること
+- fvmがインストールされていること
+- Xcodeがインストールされていること
+- Xcodeで新規作成したネイティブiOSアプリがビルドできること
+- Android Studioがインストールされていること
+- Android Studioで新規作成したネイティブAndroidアプリがビルドできること
+- Android StudioのPlugin2つ(Flutterとdart)がインストールされていること
 
-This project is a starting point for a Flutter application.
+## 手順
 
-A few resources to get you started if this is your first Flutter project:
+1. fvmを使用しFlutterSDKをインストール
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+$ fvm install 2.8.1
+$ fvm use 2.8.1
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Android Studio/Preference/Language & Frameworks/DartとFlutterのSDK Pathを設定する
