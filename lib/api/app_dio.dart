@@ -9,7 +9,7 @@ final appDioProvider = Provider<AppDio>((_) => AppDio());
 class AppDio with DioMixin implements Dio {
   AppDio() {
     options = BaseOptions(
-      baseUrl: "https://mfx-recruit-dev.herokuapp.com/",
+      baseUrl: "https://mfx-recruit-dev.herokuapp.com",
     );
 
     interceptors.addAll([
