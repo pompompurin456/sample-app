@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sample/user/provider/user_provider.dart';
+import 'package:sample/user_detail/view/user_detail_screen.dart';
 
 class UserScreen extends ConsumerWidget {
   const UserScreen({Key? key}) : super(key: key);
@@ -26,6 +27,10 @@ class UserScreen extends ConsumerWidget {
                 ),
                 child: ListTile(
                   title: Text(user.name),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UserDetailScreen()),
+                  ),
                 ),
               );
             },
