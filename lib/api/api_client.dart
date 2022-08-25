@@ -8,7 +8,7 @@ import 'entity/remote/user_response.dart';
 part 'api_client.g.dart';
 
 final apiClientProvider = Provider<ApiClient>(
-      (ref) => ApiClient(ref.watch(appDioProvider)),
+  (ref) => ApiClient(ref.watch(appDioProvider)),
 );
 
 @RestApi()
