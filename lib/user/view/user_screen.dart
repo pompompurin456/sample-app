@@ -10,24 +10,35 @@ class UserScreen extends ConsumerWidget {
     final userAsyncValue = ref.watch(userProvider);
     return userAsyncValue.when(
       data: (users) {
-        return ListView.builder(
-          itemCount: users.length,
-          itemBuilder: (BuildContext context, int index) {
-            final user = users[index];
-            return Column(
-              children: [
-                Text(user.name),
-              ],
-            );
-          },
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('User'),
+          ),
+          body: ListView.builder(
+            itemCount: users.length,
+            itemBuilder: (BuildContext context, int index) {
+              final user = users[index];
+              return Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(color: Colors.grey),
+                  ),
+                ),
+                child: ListTile(
+                  title: Text(user.name),
+                ),
+              );
+            },
+          ),
         );
       },
       error: (error, stackTrace) {
-        print('$error');
         return Text('$error');
       },
-      loading: () => const Center(
-        child: Text('ロード中'),
+      loading: () => const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
