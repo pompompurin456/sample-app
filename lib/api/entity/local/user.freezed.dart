@@ -18,8 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$UserTearOff {
   const _$UserTearOff();
 
-  _User call({required String name}) {
+  _User call({required int userId, required String name}) {
     return _User(
+      userId: userId,
       name: name,
     );
   }
@@ -30,6 +31,7 @@ const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
+  int get userId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,7 +42,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String name});
+  $Res call({int userId, String name});
 }
 
 /// @nodoc
@@ -53,9 +55,14 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? userId = freezed,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -69,7 +76,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({String name});
+  $Res call({int userId, String name});
 }
 
 /// @nodoc
@@ -83,9 +90,14 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? userId = freezed,
     Object? name = freezed,
   }) {
     return _then(_User(
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -97,14 +109,16 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_User implements _User {
-  const _$_User({required this.name});
+  const _$_User({required this.userId, required this.name});
 
+  @override
+  final int userId;
   @override
   final String name;
 
   @override
   String toString() {
-    return 'User(name: $name)';
+    return 'User(userId: $userId, name: $name)';
   }
 
   @override
@@ -112,12 +126,15 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _User &&
+            const DeepCollectionEquality().equals(other.userId, userId) &&
             const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(userId),
+      const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -126,8 +143,10 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User({required String name}) = _$_User;
+  const factory _User({required int userId, required String name}) = _$_User;
 
+  @override
+  int get userId;
   @override
   String get name;
   @override
