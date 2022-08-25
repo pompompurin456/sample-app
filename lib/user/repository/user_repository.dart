@@ -11,8 +11,8 @@ class UserRepository {
   const UserRepository(this.apiClient);
 
   Future<List<User>> fetchUsers() async {
-    final response = await apiClient.getUser();
+    final response = await apiClient.getUsers();
 
-    return response.map((e) => User(name: e.name)).toList();
+    return response.map((e) => User(userId: e.id, name: e.name)).toList();
   }
 }
