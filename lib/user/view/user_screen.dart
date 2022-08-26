@@ -30,8 +30,10 @@ class UserScreen extends ConsumerWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          UserDetailScreen(userId: user.userId),
+                      builder: (context) => UserDetailScreen(
+                        userName: user.name,
+                        userId: user.userId,
+                      ),
                     ),
                   ),
                 ),
