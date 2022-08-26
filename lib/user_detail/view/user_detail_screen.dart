@@ -26,20 +26,14 @@ class UserDetailScreen extends HookConsumerWidget {
           body: Column(
             children: [
               const SizedBox(height: 36),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const Text('User:'),
-                  Text(userName),
-                ],
+              _ListHeader(
+                mainTitle: 'User:',
+                subTitle: userName,
               ),
               const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const Text('Total:'),
-                  Text(sumBalance.toString()),
-                ],
+              _ListHeader(
+                mainTitle: 'Total:',
+                subTitle: '$sumBalance円',
               ),
               const SizedBox(height: 48),
               const Divider(color: Colors.black),
@@ -48,14 +42,22 @@ class UserDetailScreen extends HookConsumerWidget {
                   itemCount: userDetails.length,
                   itemBuilder: (BuildContext context, int index) {
                     final userDetail = userDetails[index];
+                    final balance = userDetail.balance;
                     return Container(
                       decoration: const BoxDecoration(
                         border: Border(
                           bottom: BorderSide(color: Colors.black),
                         ),
                       ),
-                      child: ListTile(
-                        title: Text(userDetail.name),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(userDetail.name),
+                            Text('$balance円'),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -72,6 +74,31 @@ class UserDetailScreen extends HookConsumerWidget {
         body: Center(
           child: CircularProgressIndicator(),
         ),
+      ),
+    );
+  }
+}
+
+class _ListHeader extends StatelessWidget {
+  const _ListHeader({
+    Key? key,
+    required this.mainTitle,
+    required this.subTitle,
+  }) : super(key: key);
+
+  final String mainTitle;
+  final String subTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 50),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(mainTitle),
+          Text(subTitle),
+        ],
       ),
     );
   }
